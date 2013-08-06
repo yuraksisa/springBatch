@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.3.0.201307091516-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/main/resources/com/batch/springbatch/config/database.xml</config>
+		<config>src/main/resources/com/batch/springbatch/config/job-repository.xml</config>
+		<config>src/main/resources/com/batch/springbatch/config/jobs.xml</config>
+		<config>src/main/resources/com/batch/springbatch/config/context.xml</config>
+	</configs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>
