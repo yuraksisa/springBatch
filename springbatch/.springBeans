@@ -11,6 +11,9 @@
 		<config>src/main/resources/com/batch/springbatch/config/job-repository.xml</config>
 		<config>src/main/resources/com/batch/springbatch/config/jobs.xml</config>
 		<config>src/main/resources/com/batch/springbatch/config/context.xml</config>
+		<config>src/main/resources/com/batch/springbatch/config/jobs-bicing.xml</config>
+		<config>src/main/resources/com/batch/springbatch/config/jobs-countries.xml</config>
+		<config>src/main/resources/com/batch/springbatch/config/jobs-helloworld.xml</config>
 	</configs>
 	<configSets>
 	</configSets>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
+
+
+  <batch:job id="bicingStationLoaderJob">
+     <batch:step id="bicingStationLoaderStep1">
+       <batch:tasklet>
+         <batch:chunk reader="bicingStationItemReader" 
+                      writer="bicingStationItemWriter"
+                      commit-interval="10"/>
+       </batch:tasklet>
+     </batch:step>
+  </batch:job>
+
+  <bean id="bicingModel" class="com.batch.springbatch.jobs.model.BicingStation" scope="prototype"/>
+
+  <bean id="bicingStationItemReader" 
+        class="org.springframework.batch.item.xml.StaxEventItemReader">
+    <property name="fragmentRootElementName" value="station" />
+    <property name="resource" value="classpath:files/bicing-stations.xml" />
+    <property name="unmarshaller" ref="bicingStationMarshaller" />
+  </bean>
+
+  <bean id="bicingStationItemWriter"
+        class="org.springframework.batch.item.file.FlatFileItemWriter">
+     <property name="resource" value="file:c:/bicing-stations.txt"/>
+     <property name="lineAggregator">
+       <bean class="org.springframework.batch.item.file.transform.PassThroughLineAggregator"></bean>
+     </property>
+  </bean>
+
+  
+  <bean id="bicingStationMarshaller" 
+      class="org.springframework.oxm.xstream.XStreamMarshaller">
+    <property name="aliases">
+        <util:map id="aliases">
+            <entry key="station"
+                   value="com.batch.springbatch.jobs.model.BicingStation" />
+            <entry key="id" value="java.lang.Integer" />
+            <entry key="lang" value="java.lang.Float" />
+            <entry key="long" value="java.lang.Float" />
+            <entry key="street" value="java.lang.String" />
+            <entry key="streetNumber" value="java.lang.String" />
+        </util:map>
+    </property>
+  </bean>
+
+
+</beans>

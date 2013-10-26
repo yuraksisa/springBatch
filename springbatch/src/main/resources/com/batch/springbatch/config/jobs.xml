@@ -7,13 +7,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
 
-  <bean id="helloTask" class="com.batch.springbatch.jobs.tasks.HelloWorldTask">
-  </bean>
 
-  <batch:job id="helloWorldJob">
-     <batch:step id="step1">
-        <batch:tasklet ref="helloTask"/>
-     </batch:step>  
-  </batch:job>
-
+  <import resource="jobs-helloworld.xml"/> 
+  <import resource="jobs-countries.xml"/>
+  <import resource="jobs-bicing.xml"/>
+  
 </beans>
