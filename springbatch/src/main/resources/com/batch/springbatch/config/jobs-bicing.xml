@@ -39,14 +39,19 @@
   <bean id="bicingStationMarshaller" 
       class="org.springframework.oxm.xstream.XStreamMarshaller">
     <property name="aliases">
-        <util:map id="aliases">
+        <util:map>
             <entry key="station"
                    value="com.batch.springbatch.jobs.model.BicingStation" />
-            <entry key="id" value="java.lang.Integer" />
-            <entry key="lang" value="java.lang.Float" />
-            <entry key="long" value="java.lang.Float" />
-            <entry key="street" value="java.lang.String" />
-            <entry key="streetNumber" value="java.lang.String" />
+        </util:map>
+    </property>
+    <property name="fieldAliases">
+        <util:map>
+            <entry key="com.batch.springbatch.jobs.model.BicingStation.lon" value="long"/>
+        </util:map>
+    </property>
+    <property name="omittedFields">
+        <util:map>
+            <entry key="com.batch.springbatch.jobs.model.BicingStation" value="height,nearbyStationList,status,slots,bikes"/>
         </util:map>
     </property>
   </bean>
